@@ -140,11 +140,16 @@ public:
 	/** Set the vtk RenderWindow size. Used only for Linux (not necessary for Windows) */
   void SetWindowSize(int w, int h);
 
-  /** Struct containing information regarding visual pipe plugged into the view. */
-  struct mafVisualPipeInfo
+  /** Class containing information regarding visual pipe plugged into the view. */
+  class mafVisualPipeInfo
   {
+	public:
     mafString m_PipeName;
     long      m_Visibility;
+
+    mafVisualPipeInfo() {	//BES: 22.1.2016 - bug fix: uninitialised member field
+			m_Visibility = VISIBLE;
+    }
   };
   typedef std::map<mafString, mafVisualPipeInfo> mafPipeMap;
 
